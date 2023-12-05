@@ -27,7 +27,7 @@ func GetFloat() (float64, error) {
 
 // Average got array []float64
 // And write the average of all num.
-func Average(numbers []float64) {
+func Average(numbers [3]float64) {
 	var sum float64 = 0
 	for _, value := range numbers {
 		sum += value
