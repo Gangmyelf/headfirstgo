@@ -28,7 +28,7 @@ func GetFloat() (float64, error) {
 
 // Average got array []float64
 // And write the average of all num.
-func Average(numbers [3]float64) {
+func Average(numbers []float64) {
 	var sum float64 = 0
 	for _, value := range numbers {
 		sum += value
@@ -38,10 +38,10 @@ func Average(numbers [3]float64) {
 }
 
 // ReadFile got the name of text file and
-// return [3]float64 array
-func ReadFile(fileName string) ([3]float64, error) {
+// return []float64 slice
+func ReadFile(fileName string) ([]float64, error) {
 	file, err := os.Open(fileName)
-	numbers := [3]float64{}
+	numbers := []float64{}
 	count := 0
 	if err != nil {
 		log.Fatal(err)
