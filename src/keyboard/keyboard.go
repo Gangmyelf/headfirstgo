@@ -37,6 +37,8 @@ func Average(numbers [3]float64) {
 	fmt.Printf("Average: %0.2f\n ", sum/sampleCount)
 }
 
+// ReadFile got the name of text file and
+// return [3]float64 array
 func ReadFile(fileName string) ([3]float64, error) {
 	file, err := os.Open(fileName)
 	numbers := [3]float64{}
@@ -50,7 +52,7 @@ func ReadFile(fileName string) ([3]float64, error) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		count += 1
+		count++
 		fmt.Println(scanner.Text())
 	}
 	err = file.Close()
