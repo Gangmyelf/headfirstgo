@@ -41,7 +41,7 @@ func Average(numbers []float64) {
 // return []float64 slice
 func ReadFile(fileName string) ([]float64, error) {
 	file, err := os.Open(fileName)
-	numbers := []float64{}
+	numbers := make([]float64, 3)
 	count := 0
 	if err != nil {
 		log.Fatal(err)
