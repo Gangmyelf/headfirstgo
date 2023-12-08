@@ -4,6 +4,7 @@ package keyboard
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -34,4 +35,30 @@ func Average(numbers [3]float64) {
 	}
 	sampleCount := float64(len(numbers))
 	fmt.Printf("Average: %0.2f\n ", sum/sampleCount)
+}
+
+func ReadFile(fileName string) ([3]float64, error) {
+	file, err := os.Open(fileName)
+	numbers := [3]float64{}
+	count := 0
+	if err != nil {
+		log.Fatal(err)
+	}
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		numbers[count], err = strconv.ParseFloat(scanner.Text(), 64)
+		if err != nil {
+			log.Fatal(err)
+		}
+		count += 1
+		fmt.Println(scanner.Text())
+	}
+	err = file.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if scanner.Err() != nil {
+		log.Fatal(scanner.Err())
+	}
+	return numbers, err
 }
