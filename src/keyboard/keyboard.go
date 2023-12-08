@@ -42,17 +42,16 @@ func Average(numbers []float64) {
 func ReadFile(fileName string) ([]float64, error) {
 	file, err := os.Open(fileName)
 	numbers := make([]float64, 3)
-	count := 0
 	if err != nil {
 		log.Fatal(err)
 	}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		numbers[count], err = strconv.ParseFloat(scanner.Text(), 64)
+		num, err := strconv.ParseFloat(scanner.Text(), 64)
 		if err != nil {
 			log.Fatal(err)
 		}
-		count++
+		numbers = append(numbers, num)
 		fmt.Println(scanner.Text())
 	}
 	err = file.Close()
