@@ -3,6 +3,7 @@ package keyboard
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -42,17 +43,16 @@ func Average(numbers []float64) {
 func ReadFile(fileName string) ([]float64, error) {
 	file, err := os.Open(fileName)
 	numbers := make([]float64, 3)
-	count := 0
 	if err != nil {
 		log.Fatal(err)
 	}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		numbers[count], err = strconv.ParseFloat(scanner.Text(), 64)
+		num, err := strconv.ParseFloat(scanner.Text(), 64)
 		if err != nil {
 			log.Fatal(err)
 		}
-		count++
+		numbers = append(numbers, num)
 		fmt.Println(scanner.Text())
 	}
 	err = file.Close()
@@ -63,4 +63,21 @@ func ReadFile(fileName string) ([]float64, error) {
 		log.Fatal(scanner.Err())
 	}
 	return numbers, err
+}
+
+func ReadArg(arrayOfFloat []string) (float64, error) {
+	argument := arrayOfFloat[1:]
+	var sum float64
+	for _, value := range argument {
+		number, err := strconv.ParseFloat(value, 64)
+		if err != nil {
+			log.Fatal(err)
+		}
+		sum += number
+	}
+	if sum == 0 {
+		err := errors.New("Вы ввели нулевое значение")
+		log.Fatal(err)
+	}
+	return sum / float64(len(argument)), nil
 }
