@@ -3,6 +3,7 @@ package keyboard
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -62,4 +63,21 @@ func ReadFile(fileName string) ([]float64, error) {
 		log.Fatal(scanner.Err())
 	}
 	return numbers, err
+}
+
+func ReadArg(arrayOfFloat []string) (float64, error) {
+	argument := arrayOfFloat[1:]
+	var sum float64
+	for _, value := range argument {
+		number, err := strconv.ParseFloat(value, 64)
+		if err != nil {
+			log.Fatal(err)
+		}
+		sum += number
+	}
+	if sum == 0 {
+		err := errors.New("Вы ввели нулевое значение")
+		log.Fatal(err)
+	}
+	return sum / float64(len(argument)), nil
 }
