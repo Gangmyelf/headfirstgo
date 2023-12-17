@@ -81,3 +81,13 @@ func ReadArg(arrayOfFloat []string) (float64, error) {
 	}
 	return sum / float64(len(argument)), nil
 }
+
+func Maximum(num ...float64) (float64, error) {
+	MaxNum := num[0]
+	for _, number := range num {
+		if number > MaxNum {
+			MaxNum = number
+		}
+	}
+	return MaxNum, nil
+}
