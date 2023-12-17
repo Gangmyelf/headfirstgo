@@ -101,3 +101,24 @@ func InRange(min float64, max float64, rangeOther ...float64) []float64 {
 	}
 	return result
 }
+
+func Strings(filename string) ([]string, error) {
+	file, err := os.Open(filename)
+	fullnames := []string{}
+	if err != nil {
+		log.Fatal(err)
+	}
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		name := scanner.Text()
+		fullnames = append(fullnames, name)
+	}
+	err = file.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if scanner.Err() != nil {
+		log.Fatal(err)
+	}
+	return fullnames, nil
+}
