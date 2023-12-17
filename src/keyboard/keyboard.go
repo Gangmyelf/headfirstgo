@@ -92,7 +92,7 @@ func Maximum(num ...float64) (float64, error) {
 	return MaxNum, nil
 }
 
-func inRange(min float64, max float64, rangeOther ...float64) []float64 {
+func InRange(min float64, max float64, rangeOther ...float64) []float64 {
 	result := []float64{}
 	for _, numbers := range rangeOther {
 		if numbers <= max && numbers >= min {
