@@ -122,3 +122,25 @@ func Strings(filename string) ([]string, error) {
 	}
 	return fullnames, nil
 }
+
+func CollectStrings(text ...string) ([]string, []int) {
+	counts := []int{}
+	names := []string{}
+
+	for _, line := range text {
+		matched := false
+		for i, name := range names {
+			if name == line {
+				fmt.Printf("The count is %d\n", counts[i])
+				counts[i]++
+				fmt.Printf("The count is %d after ++\n", counts[i])
+				matched = true
+			}
+		}
+		if matched == false {
+			names = append(names, line)
+			counts = append(counts, 1)
+		}
+	}
+	return names, counts
+}
