@@ -131,9 +131,9 @@ func CollectStrings(text ...string) ([]string, []int) {
 		matched := false
 		for i, name := range names {
 			if name == line {
-				fmt.Printf("The count is %d\n", counts[i])
+				//fmt.Printf("The count is %d\n", counts[i])
 				counts[i]++
-				fmt.Printf("The count is %d after ++\n", counts[i])
+				//fmt.Printf("The count is %d after ++\n", counts[i])
 				matched = true
 			}
 		}
