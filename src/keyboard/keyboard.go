@@ -144,3 +144,12 @@ func CollectStrings(text ...string) ([]string, []int) {
 	}
 	return names, counts
 }
+
+func CollectStringsWithMaps(text ...string) map[string]int {
+	ranks := map[string]int{}
+
+	for _, line := range text {
+		ranks[line]++
+	}
+	return ranks
+}
