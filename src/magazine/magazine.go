@@ -2,10 +2,24 @@ package magazine
 
 import "fmt"
 
+type Address struct {
+	Street     string
+	City       string
+	State      string
+	PostalCode string
+}
+
 type Subcsriber struct {
-	Name   string
-	Rate   float64
-	Active bool
+	Name        string
+	Rate        float64
+	Active      bool
+	HomeAddress Address
+}
+
+type Employee struct {
+	Name        string
+	Salary      float64
+	HomeAddress Address
 }
 
 func DefaultSubcriber(name string) *Subcsriber {
@@ -23,9 +37,4 @@ func PrintInfo(sub *Subcsriber) {
 
 func ApplyDiscount(s *Subcsriber) {
 	s.Rate = 4.99
-}
-
-type Employee struct {
-	Name   string
-	Salary float64
 }
