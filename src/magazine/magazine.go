@@ -5,3 +5,7 @@ type Subcsriber struct {
 	Rate   float64
 	Active bool
 }
+type Employee struct {
+	Name   string
+	Salary float64
+}
