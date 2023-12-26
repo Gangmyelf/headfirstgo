@@ -1,7 +1,7 @@
 package magazine
 
-type subcsriber struct {
-	name   string
-	rate   float64
-	active bool
+type Subcsriber struct {
+	Name   string
+	Rate   float64
+	Active bool
 }
