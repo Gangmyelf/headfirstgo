@@ -5,7 +5,3 @@ type subcsriber struct {
 	rate   float64
 	active bool
 }
-
-func main() {
-
-}
