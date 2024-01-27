@@ -153,3 +153,28 @@ func CollectStringsWithMaps(text ...string) map[string]int {
 	}
 	return ranks
 }
+
+func ReadFile_string(fileName string) ([]string, error) {
+	file, err := os.Open(fileName)
+	strings := make([]string, 0)
+	if err != nil {
+		log.Fatal(err)
+	}
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		//num, err := strconv.ParseFloat(scanner.Text(), 64)
+		if err != nil {
+			log.Fatal(err)
+		}
+		strings = append(strings, scanner.Text())
+		//fmt.Println(scanner.Text())
+	}
+	err = file.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+	if scanner.Err() != nil {
+		log.Fatal(scanner.Err())
+	}
+	return strings, err
+}
