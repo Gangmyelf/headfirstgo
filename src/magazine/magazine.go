@@ -27,6 +27,10 @@ func DefaultSubcriber(name string) *Subcsriber {
 	sub.Name = name
 	sub.Rate = 5.99
 	sub.Active = true
+	sub.Address.City = "Botwa"
+	sub.Address.Street = "Botwa"
+	sub.Address.PostalCode = "000000"
+	sub.Address.State = "Botwa"
 	return &sub
 }
 func PrintInfo(sub *Subcsriber) {
