@@ -27,6 +27,20 @@ func GetFloat() (float64, error) {
 	return finalInput, nil
 }
 
+func GetInt() (int, error) {
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		return 0, err
+	}
+	input = strings.TrimSpace(input)
+	finalInput, err := strconv.ParseInt(input, 10, 64)
+	if err != nil {
+		return 0, err
+	}
+	return int(finalInput), nil
+}
+
 // Average got array []float64
 // And write the average of all num.
 func Average(numbers []float64) {
