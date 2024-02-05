@@ -41,6 +41,16 @@ func GetInt() (int, error) {
 	return int(finalInput), nil
 }
 
+func GetString() (string, error) {
+	reader := bufio.NewReader(os.Stdin)
+	input, err := reader.ReadString('\n')
+	if err != nil {
+		return "", err
+	}
+	input = strings.TrimSpace(input)
+	return input, nil
+}
+
 // Average got array []float64
 // And write the average of all num.
 func Average(numbers []float64) {
